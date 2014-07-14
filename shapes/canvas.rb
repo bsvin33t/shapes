@@ -1,4 +1,6 @@
 require 'java'
+require_relative 'line'
+
 
 puts "#{RUBY_PLATFORM}"
 class Canvas < javax.swing.JPanel
@@ -13,9 +15,11 @@ class Canvas < javax.swing.JPanel
   end
 
   
-  def paintComponent(graphics)
+  def paintComponent(graphics, component)
     super(graphics)
-  end  
+    component.render graphics
+  end
 end
 
 canvas = Canvas.new
+
